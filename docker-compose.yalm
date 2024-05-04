@@ -1,0 +1,38 @@
+version: '3.5'
+
+services:
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    image: jnunesds/nginx
+    container_name: nginx
+    networks:
+      - nodenet
+    ports:
+      - "8080:80"
+    expose:
+      - "8080"
+    depends_on:
+      - nodeproject
+
+  nodeproject:
+      build:
+        context: ./nodeProject
+        dockerfile: Dockerfile
+      image: jnunesds/nodejs
+      container_name: app
+      volumes:
+        - ./nodeProject:/usr/src/app
+        - /usr/src/app/node_modules
+      tty: true
+      networks:
+        - nodenet
+      ports:
+        - "3000:3000"
+
+networks:
+  nodenet:
+    name: nodenet
+    driver: bridge
