@@ -8,4 +8,4 @@ O resultado esperdo é que a aplicação node consiga interagir com o banco de d
 O resultado do sucesso da escrita no banco de dados deve ser espelhado na própria aplicação node que, abaixo de um título h1 tendo o nome do curso, deve ter também uma lista com os nomes já cadastrados no banco de dados.
 Tudo isso deve ser acessado pelo usuário através do Nginx, pois o container nodejs não pode fornecer acesso direto ao usuário.
 
-**Obs.:** _A pasta do MySql é gerada ao rodar o projeto e não precisa ficar presente no repositório git._
+**Obs.:** _A pasta do MySql é gerada ao rodar o projeto e não precisa ficar presente no repositório git. Assim podemos ter um projeto mais leve._
