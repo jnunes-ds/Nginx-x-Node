@@ -1,5 +1,5 @@
 {
-  "name": "nodeProject",
+  "name": "node-project",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -7,7 +7,8 @@
     "start": "nodemon index.js"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "index.js": "^0.0.3",

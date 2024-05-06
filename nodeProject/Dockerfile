@@ -1,14 +1,17 @@
 FROM node:15
 
-# Install dockerize
-ENV DOCKERIZE_VERSION v0.6.1
-RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-
 WORKDIR /usr/src/app
 
 COPY . .
+
+# Install dockerize
+ENV DOCKERIZE_VERSION v0.7.0
+
+RUN echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.list \
+    && apt-get update \
+    && apt-get install -y wget \
+    && wget -O - https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz | tar xzf - -C /usr/local/bin \
+    && apt-get autoremove -yqq --purge wget && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 3000
 
