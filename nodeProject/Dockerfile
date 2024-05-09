@@ -12,9 +12,10 @@ RUN echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.
     && apt-get install -y wget \
     && wget -O - https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz | tar xzf - -C /usr/local/bin \
     && apt-get autoremove -yqq --purge wget && rm -rf /var/lib/apt/lists/* \
+    && yarn install
 
 EXPOSE 3000
 
-CMD ["yarn"]
+
 
 CMD ["yarn", "start"]
